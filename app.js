@@ -1,43 +1,42 @@
 const Traingle = (size, style) => {
-    size = size < 2 ? 2 : size
-    let MaxRowSize = (size * 2)-1
-    let end = Math.floor(MaxRowSize/2)
     let i = 0
-    let arr=  []
-    let start = end
+    let left = size - 1
+    let start = left
     while (i < size) {
-        let j = 0
         let tmp = []
-        while (j < end) {
+        let j = 0
+        while (j <= left) {
             tmp[j] = " "
-            if(i === (size-1) && j%2 ===0){
+            if (j === left) {
+                tmp[j] = style
+            }
+            if (start >= 0) {
+                tmp[start] = style
+            }
+            if (i === (size - 1) && j % 2 === 0) {
                 tmp[j] = style
             }
             j++
         }
-        tmp.push(style)
-        if(start < end){
-            tmp[start] = style
-        }
         start--
-        end++
+        left++
         i++
 
         j = 0
-        let tmp1 = ""
+        let rows = ""
         while (j < tmp.length) {
-            tmp1+=tmp[j]
+            rows += tmp[j]
             j++
         }
-        console.log(tmp1)
+        console.log(rows)
     }
+
 }
 
-Traingle(5, "0")
+
+Traingle(5, "o")
 
 //   *
 //  * *
 // * * *
-
-
 
